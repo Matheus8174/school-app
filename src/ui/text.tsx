@@ -1,6 +1,4 @@
-import { PropsWithChildren } from 'react';
-
-import { Text as RNText } from 'react-native';
+import { Text as RNText, TextProps as RNTextProps } from 'react-native';
 
 import { VariantProps, tv } from 'tailwind-variants';
 
@@ -23,14 +21,19 @@ const text = tv({
 
 type TextVariants = VariantProps<typeof text>;
 
-interface TextProps extends TextVariants {
+interface TextProps extends TextVariants, RNTextProps {
+  children: React.ReactNode;
   className?: string;
 }
 
-function Text({ children, variant, className }: PropsWithChildren<TextProps>) {
+function Text({ children, variant, className, ...props }: TextProps) {
   const styles = text({ variant, className });
 
-  return <RNText className={styles}>{children}</RNText>;
+  return (
+    <RNText className={styles} {...props}>
+      {children}
+    </RNText>
+  );
 }
 
 export default Text;

@@ -7,6 +7,7 @@ function ToggleThemeButton() {
 
   return (
     <TouchableOpacity
+      activeOpacity={0.7}
       onPress={() => {
         setSelectedTheme(selectedTheme === 'light' ? 'dark' : 'light');
       }}
