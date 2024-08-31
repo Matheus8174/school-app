@@ -1,7 +1,10 @@
+import React from 'react';
+
 import {
   Image,
   ImageSourcePropType,
   TouchableOpacity,
+  TouchableOpacityProps,
   View
 } from 'react-native';
 
@@ -15,30 +18,35 @@ import admin from '@/assets/imgs/aula-on-line.png';
 
 import Button from '@/ui/button';
 import FloatAction from '@/ui/float-action';
+import { useNavigation } from 'expo-router';
 
-type ItemProps = {
+interface ItemProps extends TouchableOpacityProps {
   image: ImageSourcePropType;
   desc: string;
   title: string;
-};
+}
 
-function Item({ image, desc, title }: ItemProps) {
+function Item({ image, desc, title, ...rest }: ItemProps) {
   return (
-    <TouchableOpacity activeOpacity={0.5}>
-      <View className="flex-row gap-4 justify-center items-center">
-        <Image source={image} />
-        <View className="flex-1 justify-around gap-2">
-          <Text variant="h3">{title}</Text>
-          <Text className="text-grey">{desc}</Text>
-        </View>
+    <TouchableOpacity
+      className="flex-row gap-4 justify-center items-center"
+      activeOpacity={0.7}
+      {...rest}
+    >
+      <Image source={image} />
+      <View className="flex-1 justify-around gap-2">
+        <Text variant="h3">{title}</Text>
+        <Text className="text-grey">{desc}</Text>
       </View>
     </TouchableOpacity>
   );
 }
 
 function ChooseRole() {
+  const { navigate } = useNavigation();
+
   return (
-    <View className="px-9 py-10 gap-20  flex-1">
+    <View className="gap-20 flex-1 justify-center items-center px-9 py-10">
       <Text variant="h1" className="self-center">
         Quem é você?
       </Text>
@@ -48,6 +56,7 @@ function ChooseRole() {
         image={professor}
         desc="Ser professor é guiar jornadas de conhecimento, iluminando caminhos e
       despertando sonhos."
+        onPress={() => navigate('studant')}
       />
 
       <Item

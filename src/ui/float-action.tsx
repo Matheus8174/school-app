@@ -32,7 +32,7 @@ function FloatAction({
   children,
   className,
   onPress,
-  ...props
+  ...rest
 }: FloatActionProps) {
   const size = useSharedValue(1);
 
@@ -90,7 +90,7 @@ function FloatAction({
             'p-4 w-20 h-20 rounded-full bg-black-200',
             className
           )}
-          {...props}
+          {...rest}
         />
       </Animated.View>
       <Animated.View style={iconStyle} className="absolute">

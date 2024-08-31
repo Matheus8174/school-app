@@ -14,6 +14,11 @@ const button = tv({
     text: 'text-base font-bold'
   },
   variants: {
+    disable: {
+      true: {
+        root: '!bg-gray-500'
+      }
+    },
     variant: {
       outlined: {
         root: 'bg-transparent border-[1px] border-white',
@@ -25,6 +30,7 @@ const button = tv({
     }
   },
   defaultVariants: {
+    disable: false,
     variant: 'contained'
   }
 });
@@ -37,12 +43,15 @@ interface ButtonProps extends TouchableOpacityProps, ButtonVariants {
 
 const { root, text } = button();
 
-function Root({ children, className, variant, ...props }: ButtonProps) {
+function Root(props: ButtonProps) {
+  const { children, className, variant, disable, ...rest } = props;
+
   return (
     <TouchableOpacity
-      className={root({ className, variant })}
+      disabled={disable}
+      className={root({ className, disable, variant })}
       activeOpacity={0.7}
-      {...props}
+      {...rest}
     >
       {children}
     </TouchableOpacity>
@@ -53,9 +62,9 @@ interface TextProps extends RNTextProps, ButtonVariants {
   children: React.ReactNode;
 }
 
-function Text({ className, children, variant, ...props }: TextProps) {
+function Text({ className, children, variant, ...rest }: TextProps) {
   return (
-    <RNText className={text({ className, variant })} {...props}>
+    <RNText className={text({ className, variant })} {...rest}>
       {children}
     </RNText>
   );

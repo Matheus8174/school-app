@@ -6,7 +6,9 @@
       "@/*": [
         "./src/*"
       ]
-    }
+    },
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   },
   "include": [
     "**/*.ts",
@@ -15,5 +17,12 @@
     "expo-env.d.ts",
     "src/styles/colors.js",
     "tailwind.config.js"
-  ]
+  ],
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "android",
+    "ios"
+  ],
 }

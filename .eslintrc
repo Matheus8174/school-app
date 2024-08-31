@@ -4,6 +4,12 @@
     "universe/native",
     "plugin:prettier/recommended"
   ],
+  "overrides": [
+    {
+      "files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
+      "extends": ["plugin:testing-library/react"]
+    }
+  ],
   "rules": {
     "prettier/prettier": "error",
     "react-hooks/exhaustive-deps": "warn",

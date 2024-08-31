@@ -24,12 +24,12 @@ function Link({
   className,
   size,
   children,
-  ...props
+  ...rest
 }: PropsWithChildren<LinkProps>) {
   const styles = link({ size, className });
 
   return (
-    <ExpoLink className={styles} {...props}>
+    <ExpoLink className={styles} {...rest}>
       {children}
     </ExpoLink>
   );

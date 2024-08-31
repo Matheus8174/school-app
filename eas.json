@@ -10,6 +10,12 @@
     "preview": {
       "distribution": "internal"
     },
+    "build-and-maestro-test": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "withoutCredentials": true,
+      "config": "build-and-maestro-test.yml"
+    },
     "production": {}
   },
   "submit": {

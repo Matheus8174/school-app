@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import { Text as RNText, TextProps as RNTextProps } from 'react-native';
 
 import { VariantProps, tv } from 'tailwind-variants';
@@ -26,14 +27,16 @@ interface TextProps extends TextVariants, RNTextProps {
   className?: string;
 }
 
-function Text({ children, variant, className, ...props }: TextProps) {
-  const styles = text({ variant, className });
+const Text = forwardRef<RNText, TextProps>(
+  ({ children, variant, className, ...rest }, ref) => {
+    const styles = text({ variant, className });
 
-  return (
-    <RNText className={styles} {...props}>
-      {children}
-    </RNText>
-  );
-}
+    return (
+      <RNText className={styles} {...rest} ref={ref}>
+        {children}
+      </RNText>
+    );
+  }
+);
 
 export default Text;

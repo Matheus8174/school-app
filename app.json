@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "dark",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
@@ -16,10 +16,12 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.matheus.mobile",
+      "versionCode": 1,
       "softwareKeyboardLayoutMode": "pan",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#000"
       }
     },
     "web": {
@@ -30,7 +32,8 @@
     "plugins": [
       "expo-router",
       [
-        "expo-font", {
+        "expo-font",
+        {
           "fonts": [
             "node_modules/@expo-google-fonts/inter/Inter_700Bold.ttf",
             "node_modules/@expo-google-fonts/inter/Inter_400Regular.ttf"
@@ -46,7 +49,7 @@
         "origin": false
       },
       "eas": {
-        "projectId": "0c944bc5-57af-4221-8334-80487d2bab10"
+        "projectId": "b8beb768-6c56-4706-8aaa-3f80feeb5fe5"
       }
     }
   }
